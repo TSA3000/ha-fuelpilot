@@ -1,0 +1,2 @@
+{ "config": { "step": { "user": { "title": "FuelPilot", "data": { "provider": "Price source" } } },
+  "abort": { "already_configured": "This source is already configured" } } }

@@ -1,0 +1,2 @@
+{ "config": { "step": { "user": { "title": "FuelPilot", "data": { "provider": "Priskälla" } } },
+  "abort": { "already_configured": "Källan är redan konfigurerad" } } }
