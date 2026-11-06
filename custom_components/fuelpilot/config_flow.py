@@ -18,7 +18,10 @@ class FuelPilotConfigFlow(ConfigFlow, domain=DOMAIN):
                 title=PROVIDERS[user_input[CONF_PROVIDER]][0], data=user_input
             )
         schema = vol.Schema(
-            {vol.Required(CONF_PROVIDER, default="st1"): vol.In(
-                {k: v[0] for k, v in PROVIDERS.items()})}
+            {
+                vol.Required(CONF_PROVIDER, default="st1"): vol.In(
+                    {key: val[0] for key, val in PROVIDERS.items()}
+                )
+            }
         )
         return self.async_show_form(step_id="user", data_schema=schema)

@@ -1,4 +1,4 @@
-"""St1 Sverige national list price, parsed from st1.se/foretag/listpris."""
+"""St1 Sweden national list price, parsed from st1.se/foretag/listpris."""
 from __future__ import annotations
 
 import html as _html
@@ -24,10 +24,10 @@ def parse(raw: str) -> dict:
     text = re.sub(r"\s+", " ", text)
     prices: dict[str, float] = {}
     for name, value in _PRICE.findall(text):
-        # first table on the page = St1-stationer; keep first hit per fuel
+        # First table on the page is "St1-stationer"; keep the first hit per fuel
         prices.setdefault(_MAP[name], float(value.replace(",", ".")))
     if not prices:
-        raise ValueError("No prices found on st1.se – page layout changed?")
+        raise ValueError("No prices found on st1.se - page layout changed?")
     m = _VALID.search(text)
     return {"prices": prices, "valid": m.group(1) if m else None, "source": URL}
 
@@ -36,7 +36,7 @@ async def fetch(session: ClientSession) -> dict:
     async with session.get(
         URL,
         timeout=ClientTimeout(total=30),
-        headers={"User-Agent": "HomeAssistant-FuelPilot/0.1"},
+        headers={"User-Agent": "HomeAssistant-FuelPilot/0.0.1"},
     ) as resp:
         resp.raise_for_status()
         return parse(await resp.text())

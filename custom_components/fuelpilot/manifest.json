@@ -1,6 +1,7 @@
 {
   "domain": "fuelpilot",
   "name": "FuelPilot",
+  "categories": ["local_services"],
   "codeowners": ["@TSA3000"],
   "config_flow": true,
   "documentation": "https://github.com/TSA3000/ha-fuelpilot",

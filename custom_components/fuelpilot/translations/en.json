@@ -1,2 +1,21 @@
-{ "config": { "step": { "user": { "title": "FuelPilot", "data": { "provider": "Price source" } } },
-  "abort": { "already_configured": "This source is already configured" } } }
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "FuelPilot",
+        "description": "Select a fuel price source.",
+        "data": { "provider": "Price source" }
+      }
+    },
+    "abort": { "already_configured": "This source is already configured" }
+  },
+  "entity": {
+    "sensor": {
+      "bensin_95": { "name": "Petrol 95" },
+      "bensin_98": { "name": "Petrol 98" },
+      "e85": { "name": "E85" },
+      "diesel": { "name": "Diesel" },
+      "hvo100": { "name": "HVO100" }
+    }
+  }
+}

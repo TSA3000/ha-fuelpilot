@@ -16,14 +16,18 @@ PLATFORMS = [Platform.SENSOR]
 
 
 class FuelCoordinator(DataUpdateCoordinator[dict]):
+    """Fetches prices from the configured provider."""
+
     def __init__(self, hass: HomeAssistant, entry: ConfigEntry) -> None:
         super().__init__(
-            hass, _LOGGER, config_entry=entry,
+            hass,
+            _LOGGER,
+            config_entry=entry,
             name=f"{DOMAIN}_{entry.data[CONF_PROVIDER]}",
             update_interval=UPDATE_INTERVAL,
         )
         self.provider = entry.data[CONF_PROVIDER]
-        self._fetch = PROVIDERS[self.provider][1]
+        self.display_name, self.manufacturer, self._fetch = PROVIDERS[self.provider]
 
     async def _async_update_data(self) -> dict:
         try:
